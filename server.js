@@ -18,6 +18,7 @@ const User = mongoose.model('users', new mongoose.Schema({ name: String, email: 
 
 app.post('/users', async (req, res) => res.json(await new User(req.body).save()));
 app.get('/users', async (req, res) => res.json(await User.find()));
+app.get('/users/:id', async (req, res) => res.json(await User.findById(req.params.id)));
 app.put('/users/:id', async (req, res) => res.json(await User.findByIdAndUpdate(req.params.id, req.body, { new: true })));
 app.delete('/users/:id', async (req, res) => res.json(await User.findByIdAndDelete(req.params.id)));
 
