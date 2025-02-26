@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cron = require('node-cron');
+//const cron = require('node-cron');
 const fs = require('fs');
 const { exec } = require('child_process');
 require('dotenv').config();
@@ -37,7 +37,7 @@ const backupDatabase = () => {
     exec(`mongodump --uri=${process.env.MONGO_URI} --db=Users --archive=${fileName} --gzip`);
 };
 
-cron.schedule('0 0 * * *', backupDatabase);
+//cron.schedule('0 0 * * *', backupDatabase);
 app.get('/backup', (req, res) => (backupDatabase(), res.json({ message: 'Backup started' })));
 
 app.get('/restore', (req, res) => {
