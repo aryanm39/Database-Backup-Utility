@@ -21,6 +21,7 @@ const User = mongoose.model('users', new mongoose.Schema({
     password: String 
 },{ versionKey: false }));
 
+app.set('json spaces', 2);
 app.post('/users', async (req, res) => res.json(await new User(req.body).save()));
 app.get('/users', async (req, res) => res.json(await User.find()));
 app.get('/users/:id', async (req, res) => res.json(await User.findById(req.params.id)));
