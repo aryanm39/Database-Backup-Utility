@@ -1,4 +1,7 @@
 # Database-Backup-Utility
+
+npm install express mongoose dotenv node-cron
+
 MongoDB Command Line Database Tools Download
 https://www.mongodb.com/try/download/database-tools
 Paste the Tools folder in mongodb folder [path -> program files/mongodb/tools/]
