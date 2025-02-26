@@ -15,7 +15,7 @@ Backup Users Table    "method": "GET"   http://localhost:3000/backup
 Restore Users Table     "method": "GET"  http://localhost:3000/restore
 
 
-Mongodb Database db name -> Users , COllection name -> 
+Mongodb Database
 use Users;
 db.users.insertMany([
     { name: "Alice", email: "alice@example.com", username: "alice01", password: "password123" },
