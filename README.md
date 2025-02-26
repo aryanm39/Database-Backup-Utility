@@ -16,17 +16,11 @@ Restore Users Table     "method": "GET"  http://localhost:3000/restore
 
 
 Mongodb Database db name -> Users , COllection name -> 
-id 
-name 
-email 
-contact number
-username 
-password 
-
 use Users;
 db.users.insertMany([
-    { id: 1, name: "Alice", email: "alice@example.com" },
-    { id: 2, name: "Bob", email: "bob@example.com" },
-    { id: 3, name: "Charlie", email: "charlie@example.com" }
+    { name: "Alice", email: "alice@example.com", username: "alice01", password: "password123" },
+    { name: "Bob", email: "bob@example.com", username: "bob01", password: "password456" },
+    { name: "Charlie", email: "charlie@example.com", username: "charlie01", password: "password789" }
 ]);
+
 

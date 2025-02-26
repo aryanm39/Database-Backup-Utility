@@ -14,13 +14,19 @@ mongoose.connect(process.env.MONGO_URI, { dbName: 'Users' }).then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
 
-const User = mongoose.model('users', new mongoose.Schema({ name: String, email: String }));
+const User = mongoose.model('users', new mongoose.Schema({ 
+    name: String, 
+    email: String, 
+    username: String, 
+    password: String 
+}));
 
 app.post('/users', async (req, res) => res.json(await new User(req.body).save()));
 app.get('/users', async (req, res) => res.json(await User.find()));
 app.get('/users/:id', async (req, res) => res.json(await User.findById(req.params.id)));
 app.put('/users/:id', async (req, res) => res.json(await User.findByIdAndUpdate(req.params.id, req.body, { new: true })));
 app.delete('/users/:id', async (req, res) => res.json(await User.findByIdAndDelete(req.params.id)));
+
 
 const backupDir = './backups';
 if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir);
