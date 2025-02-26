@@ -19,7 +19,7 @@ const User = mongoose.model('users', new mongoose.Schema({
     email: String, 
     username: String, 
     password: String 
-}));
+},{ versionKey: false }));
 
 app.post('/users', async (req, res) => res.json(await new User(req.body).save()));
 app.get('/users', async (req, res) => res.json(await User.find()));
