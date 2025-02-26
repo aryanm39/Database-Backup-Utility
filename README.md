@@ -26,4 +26,21 @@ db.users.insertMany([
     { name: "Charlie", email: "charlie@example.com", username: "charlie01", password: "password789" }
 ]);
 
+db.users.updateOne(
+    { username: "alice01" },
+    { $set: { email: "alice.new@example.com" } }
+);
+db.users.updateMany(
+    {}, 
+    { $set: { password: "newSecurePassword" } }
+);
+db.users.updateMany(
+    {}, 
+    { $rename: { "username": "user_id" } }
+);
+
+db.users.deleteOne({ username: "bob01" });
+db.users.deleteMany({ email: { $regex: "@example.com$" } });
+db.users.deleteMany({});
+
 
