@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-//const cron = require('node-cron');
 const fs = require('fs');
 const { exec } = require('child_process');
 require('dotenv').config();
@@ -11,7 +10,7 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI, { dbName: 'Users' }).then(() => {
     console.log('MongoDB connected');
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(PORT, () => console.log(`Server running on  http://localhost:${PORT}/users`));
 });
 
 const User = mongoose.model('users', new mongoose.Schema({ 
@@ -37,7 +36,6 @@ const backupDatabase = () => {
     exec(`mongodump --uri=${process.env.MONGO_URI} --db=Users --archive=${fileName} --gzip`);
 };
 
-//cron.schedule('0 0 * * *', backupDatabase);
 app.get('/backup', (req, res) => (backupDatabase(), res.json({ message: 'Backup started' })));
 
 app.get('/restore', (req, res) => {
